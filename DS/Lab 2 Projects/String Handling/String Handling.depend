@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1691646781 source:d:\220911676\lab 2 projects\string handling\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1692210398 source:d:\piyush\mit manipal\class documents\second year\3rd sem\ds\ds lab\220911676\lab 2 projects\string handling\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1692108751 source:d:\piyush\mit manipal\class documents\second year\3rd sem\ds\ds lab\220911676\lab 2 projects\struct student\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
