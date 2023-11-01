@@ -1,62 +1,147 @@
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <string.h>
+
+#include <ctype.h>
+
+
 
 #define MAX_SIZE 100
 
-char stack[MAX_SIZE][MAX_SIZE];
-int top=-1;
 
-void push(char element[]) {
-        printf("%s",element);
-        top++;
-        strcpy(stack[top],element);}
 
-const char *pop() {
-    char c;
-    strcpy(c,stack[top]);
-    top--;
-    return c;}
+struct Stack {
 
-int isOperator(char ch) {
-    return (ch == '+' || ch == '-' || ch == '*' || ch == '/');}
+    int top;
 
-void convert(char postfix[]) {
-    char infix[100];
-    char push1[100];
-    int len = strlen(postfix);
-    int infixIndex=0;
-    for (int i=0;i<len;i++) {
-        char token = postfix[i];
+    char items[MAX_SIZE];
 
-        if (!isOperator(token)) {
-            push(token);}
-        else {
-            char operand1[100];
-            strcpy(operand1,pop());
-            char operand2[100];
-            strcpy(operand2,pop());
+};
 
-            infix[infixIndex++] = '(';
-            infix[infixIndex++] = operand2;
-            infix[infixIndex++] = token;
-            infix[infixIndex++] = operand1;
-            infix[infixIndex++] = ')';
-            infix[infixIndex] = '\0';
-            push(infix);}
+
+
+void push(struct Stack* stack, char *item) {
+
+    if (stack->top == MAX_SIZE - 1) {
+
+        printf("Stack Overflow\n");
+
+        return;
+
     }
 
+    stack->items[++stack->top] = *item;
 
 }
 
-int main() {
-    char postfix[MAX_SIZE];
-    char res[MAX_SIZE];
-    printf("Enter a postfix expression: ");
-    scanf("%s", postfix);
 
-    convert(postfix);
-    printf("Infix expression: %s\n", pop());
+
+char pop(struct Stack* stack) {
+
+    if (stack->top == -1) {
+
+        printf("Stack Underflow\n");
+
+        return -1;
+
+    }
+
+    return stack->items[stack->top--];
+
+}
+
+
+
+int isOperator(char symbol) {
+
+    if (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/')
+
+        return 1;
 
     return 0;
+
+}
+
+
+
+void postfixToInfix(char postfix[]) {
+
+    struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));
+
+    stack->top = -1;
+
+    int length = strlen(postfix);
+
+    char operand1[50], operand2[50], operator3[50], *result[100];
+
+    for (int i = 0; i < length; i++) {
+
+        if (isalpha(postfix[i]) || isdigit(postfix[i])) {
+
+            char temp[2];
+
+            temp[0] = postfix[i];
+
+            temp[1] = '\0';
+
+            push(stack, temp[0]);
+
+        } else if (isOperator(postfix[i])) {
+
+            operand2[0] = pop(stack);
+
+            operand1[0] = pop(stack);
+
+            //operand2[1] = ')';
+
+            operand2[1] = operand1[1] = '\0';
+
+            operator3[0] = postfix[i];
+
+            operator3[1] = '\0';
+
+
+
+            strcpy(result, "(");
+
+            strcat(result, operand1);
+
+            strcat(result, operator3);
+
+            strcat(result, operand2);
+
+            strcat(result, ")");
+
+            push(stack, *result);
+
+        }
+
+    }
+
+    printf("Infix Expression: ");
+
+    for (int i = 0; i < strlen(result); i++) {
+
+        printf("%c", result[i]);
+
+    }
+
+}
+
+
+
+int main() {
+
+    char postfix[MAX_SIZE];
+
+    printf("Enter a postfix expression: ");
+
+    fgets(postfix, MAX_SIZE, stdin);
+
+    postfixToInfix(postfix);
+
+    return 0;
+
 }

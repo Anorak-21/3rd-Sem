@@ -9,7 +9,7 @@ void convert(char[],char[]);
 
 int main(){
     char infix[MAX_SIZE],postfix[MAX_SIZE];
-    int ch;
+    int ch=1;
     do{
         printf("Enter an infix expression: ");
         scanf("%s", infix);

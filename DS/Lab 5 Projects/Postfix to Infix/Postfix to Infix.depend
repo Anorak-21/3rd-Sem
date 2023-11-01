@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1694363103 source:d:\piyush\mit manipal\class documents\second year\3rd sem\ds\ds lab\220911676\lab 5 projects\postfix to infix\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -9,7 +9,9 @@ void push(int);
 int pop();
 
 int main(){
-char postfix[50]="234*+";
+char postfix[50];
+printf("Enter postfix expression ");
+scanf("%s",&postfix);
 for(int i=0;postfix[i]!='\0';i++){
     if(IsOperand(postfix[i])){
         push(postfix[i]-'0');}
