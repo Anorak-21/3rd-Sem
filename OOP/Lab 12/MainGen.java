@@ -1,4 +1,4 @@
-public class GenericStack<T> {
+class GenericStack<T> {
     private T[] stack;
     private int top;
     public GenericStack() {
@@ -13,7 +13,7 @@ public class GenericStack<T> {
     public boolean isEmpty() {
         return top == -1;}}
 
-public class Student {
+class Student {
     private String name;
     private int age;
     public Student(String name, int age) {
@@ -25,7 +25,7 @@ public class Student {
         return age;}
 }
 
-public class Employee {
+class Employee {
     private String name;
     private int salary;
     public Employee(String name, int salary) {
@@ -36,7 +36,7 @@ public class Employee {
     public int getSalary() {
         return salary;}}
 
-public class MainGen {
+class MainGen {
     public static void main(String[] args) {
         GenericStack<Student> studentStack = new GenericStack<>();
         studentStack.push(new Student("Alice", 20));

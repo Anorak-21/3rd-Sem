@@ -9,7 +9,7 @@ class MainPriority implements Runnable {
     }
 
     public static void main(String[] args) {
-        Iexcep mt = new Iexcep();
+        MainPriority mt = new MainPriority();
         Thread t = new Thread(mt);
         t.setPriority(8);
         t.start();

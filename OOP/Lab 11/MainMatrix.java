@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MainMatrix{
+class MainMatrix{
     private int m[][];
     private int row,column;
     public MainMatrix(int r,int c){
@@ -48,7 +48,7 @@ public class MainMatrix{
         {
             for(int j=0;j<column;j++)
             {
-                if(max<m[i][j]);
+                if(max<m[i][j])
                 max=m[i][j];
             }
         }
@@ -79,7 +79,7 @@ public class MainMatrix{
     }
     public static void main(String args[]) throws InterruptedException
     {
-        Matrixthread l=new Matrixthread(3, 3);
+        MainMatrix l=new MainMatrix(3, 3);
         Thread t1=new Thread(()->l.display());
         Thread t2=new Thread(()->l.transpose());
         Thread t3=new Thread(()->l.maxinmat());
