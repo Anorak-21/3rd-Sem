@@ -18,8 +18,7 @@ return newNode;}
 struct Node* insertNode(struct Node* root, int data){
 if(root==NULL) return createNode(data);
 else if(root->left==NULL)
-
-root->left=insertNode(root->left,data);
+     root->left=insertNode(root->left,data);
 else root->right=insertNode(root->right,data);
 return root;}
 
